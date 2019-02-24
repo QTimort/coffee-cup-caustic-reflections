@@ -20,7 +20,7 @@ http://htmlpreview.github.io/?https://github.com/QTimort/coffee-cup-light-rays/b
 
     or
 
-        npm install
+        npm ci
 
 2.  Run webpack:
 
