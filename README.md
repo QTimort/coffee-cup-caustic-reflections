@@ -10,6 +10,9 @@ Inspired fom [this article](http://lacim.uqam.ca/~plouffe/cercles/circles.html)
 ## Preview
 http://htmlpreview.github.io/?https://github.com/QTimort/coffee-cup-light-rays/blob/master/dist/index.html
 
+## Cool examples
+1. Set 'power' to 177 and 'points' to 532
+
 ## Setup
 1.  Install dependencies:
 
