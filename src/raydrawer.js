@@ -3,18 +3,18 @@ const PI_2 = 2 * Math.PI;
 
 class RayDrawer {
 
-  constructor(ctx, width, height, points, power) {
+  constructor(ctx, width, height) {
     this._ctx = ctx;
     this.width = width;
     this.height = height;
     this._clearOpacity = 0.8;
     this._gradientStart = "#7474BF";
     this._gradientEnd = "#348AC7";
-    this.points = points;
+    this.points = 1000;
     this._rotation = -1.5707963268; // 90°
     this.lineOpacity = 0.1;
     this.updateRayon();
-    this._power = power;
+    this.power = 1;
   }
 
   set gradientStart(color) {
@@ -79,6 +79,10 @@ class RayDrawer {
 
   get lineOpacity() {
     return this._lineOpacity;
+  }
+
+  getPoints() {
+    return this._points;
   }
 
   clear() {

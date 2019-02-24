@@ -1,15 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Canvas Template</title>
-    <style>
-        body {
-            margin: 0;
-        }
-    </style>
-</head>
-<body>
-    <canvas></canvas>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Canvas Template</title>
+        <style>
+            .slidecontainer {
+                width: 100%;
+            }
+
+            .slider {
+                -webkit-appearance: none;
+                width: 100%;
+                height: 5px;
+                border-radius: 5px;
+                background: #3a3a3a;
+                outline: none;
+                opacity: 0.8;
+                -webkit-transition: .2s;
+                transition: opacity .2s;
+            }
+
+            .slider:hover {
+                opacity: 1;
+            }
+
+            .slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                background: #348ac7;
+                cursor: pointer;
+            }
+
+            .slider::-moz-range-thumb {
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                background: #348ac7;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body style="background-color: black; color: white; margin: 0; overflow: hidden">
+        <div style="float: left; width: 20%">
+            <div class="slidecontainer">
+                Power speed
+                <input type="range" min="-0.5" max="0.5" step="any" class="slider" id="powerSpeed">
+            </div>
+            <div class="slidecontainer">
+                Points
+                <input type="range" min="0" max="10000" step="any" class="slider" id="points">
+            </div>
+            <div class="slidecontainer">
+                Line opacity
+                <input type="range" min="0" max="1" step="any" class="slider" id="lineOpacity">
+            </div>
+            <div class="slidecontainer">
+                Trailing
+                <input type="range" min="0" max="1" step="any" class="slider" id="trailing">
+            </div>
+            <div class="slidecontainer">
+                Rotation speed
+                <input type="range" min="0" max="0.2" step="any" class="slider" id="rotationSpeed">
+            </div>
+        </div>
+        <div style="float: right; width: 70%">
+            <canvas></canvas>
+        </div>
+    </body>
 </html>
