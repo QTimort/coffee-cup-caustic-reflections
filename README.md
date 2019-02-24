@@ -1,4 +1,4 @@
-Caustic reflections in a cup of coffee
+# Caustic reflections in a cup of coffee
 
 Real life             |  Simulation
 :-------------------------:|:-------------------------:
