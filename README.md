@@ -1,18 +1,14 @@
-Coffee cup light rays
+Caustic reflections in a cup of coffee
+
+Real life             |  Simulation
+:-------------------------:|:-------------------------:
+![caustic reflection in a cup of coffee](http://www.antoniosiber.org/bruno_pauns_caustic/kaustika_salica_1.jpg)  |  ![caustic reflection in javascript](./img/preview-1.jpg)
 
 ## Motivation
 Inspired fom [this article](http://lacim.uqam.ca/~plouffe/cercles/circles.html)
 
 ## Preview
 http://htmlpreview.github.io/?https://github.com/QTimort/coffee-cup-light-rays/blob/master/dist/index.html
-
-## Example
-Caustic reflection in a cup of coffee
-
-![caustic reflection in a cup of coffee](http://www.antoniosiber.org/bruno_pauns_caustic/kaustika_salica_1.jpg)
-
-![caustic reflection in javascript](./img/preview-1.jpg)
-
 
 ## Setup
 1.  Install dependencies:
