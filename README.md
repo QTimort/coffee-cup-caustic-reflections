@@ -1,7 +1,7 @@
 Coffee cup light rays
 
 ## Preview
-Todo 
+http://htmlpreview.github.io/?https://github.com/QTimort/coffee-cup-light-rays/blob/master/dist/index.html
 
 ## Setup
 
