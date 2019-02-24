@@ -25,10 +25,10 @@ class Utils {
     let progress = 0;
     for (let i = 0; i < steps; ++i) {
       // calculate new color
-      const diff_red = (endRed - startRed) * progress + startRed;
-      const diff_green = (endGreen - startGreen) * progress + startGreen;
-      const diff_blue = (endBlue - startBlue) * progress + startBlue;
-      colors[i] = 'rgba(' + diff_red + ',' + diff_green + ',' + diff_blue + ',' + alpha + ')';
+      const diffRed = (endRed - startRed) * progress + startRed;
+      const diffGreen = (endGreen - startGreen) * progress + startGreen;
+      const diffBlue = (endBlue - startBlue) * progress + startBlue;
+      colors[i] = 'rgba(' + diffRed + ',' + diffGreen + ',' + diffBlue + ',' + alpha + ')';
       progress += step;
       ++i;
     }

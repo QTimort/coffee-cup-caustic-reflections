@@ -3,6 +3,7 @@ const PI_2 = 2 * Math.PI;
 
 class RayDrawer {
 
+  // Constructor
   constructor(ctx, width, height) {
     this._ctx = ctx;
     this.width = width;
@@ -10,13 +11,14 @@ class RayDrawer {
     this._clearOpacity = 0.8;
     this._gradientStart = "#7474BF";
     this._gradientEnd = "#348AC7";
-    this.points = 1000;
+    this.points = 512;
     this._rotation = -1.5707963268; // 90°
-    this.lineOpacity = 0.1;
+    this.lineOpacity = 0.4;
     this.updateRayon();
     this.power = 1;
   }
 
+  // Setters
   set gradientStart(color) {
     this._gradientStart = color;
     this.regenGradient();
@@ -65,6 +67,7 @@ class RayDrawer {
     this._power = power;
   }
 
+  // Getters
   get power() {
     return this._power;
   }
@@ -85,20 +88,25 @@ class RayDrawer {
     return this._points;
   }
 
+  // Functions
   clear() {
     this._ctx.rect(0, 0, this._width, this._height);
     this._ctx.fillStyle = "rgba(0,0,0," + this._clearOpacity + ")";
     this._ctx.fill();
   }
 
+  /**
+   * beginRad is the angular component of the polar coordinate of the beginning of the line
+   * endRad is the angular component of the polar coordinate of the end of the line
+   */
   draw() {
     for (let i = 1; i < this._points; ++i) {
-      const p0 = i * this._step + this._rotation;
-      const p1 = (i * this._power % this._points) * this._step + this._rotation;
-      const x0 = this._rayon * Math.sin(p0) + this._rayon;
-      const y0 = this._rayon * Math.cos(p0) + this._rayon;
-      const x1 = this._rayon * Math.sin(p1) + this._rayon;
-      const y1 = this._rayon * Math.cos(p1) + this._rayon;
+      const beginRad = i * this._step + this._rotation;
+      const endRad = (i * this._power % this._points) * this._step + this._rotation;
+      const x0 = this._rayon * Math.sin(beginRad) + this._rayon;
+      const y0 = this._rayon * Math.cos(beginRad) + this._rayon;
+      const x1 = this._rayon * Math.sin(endRad) + this._rayon;
+      const y1 = this._rayon * Math.cos(endRad) + this._rayon;
       this._ctx.beginPath();
       this._ctx.moveTo(x0, y0);
       this._ctx.lineTo(x1, y1);

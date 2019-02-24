@@ -99,6 +99,8 @@
 var RayDrawer = __webpack_require__(/*! ./raydrawer.js */ "./src/raydrawer.js");
 
 var canvas = document.querySelector('canvas');
+var playPause = document.getElementById('playpause');
+var powerValue = document.getElementById('power');
 var powerSpeedSlider = document.getElementById('powerSpeed');
 var pointsSlider = document.getElementById('points');
 var lineOpacitySlider = document.getElementById('lineOpacity');
@@ -110,16 +112,33 @@ canvas.width = innerWidth;
 canvas.height = innerHeight;
 
 var drawer = new RayDrawer(ctx, canvas.width, canvas.height);
-
 var powerIncrSpeed = 0.001;
 var rotationSpeed = 0;
 
+function animate() {
+    requestAnimationFrame(animate);
+    if (!playPause.checked) {
+        drawer.clear();
+        // todo check delta time and incr accordingly
+        drawer.power += powerIncrSpeed;
+        powerValue.value = parseFloat(drawer.power).toFixed(3);
+        drawer.incrRotation(rotationSpeed);
+        drawer.draw();
+    }
+}
+
+// Init sliders value
+powerValue.value = drawer.power;
 powerSpeedSlider.value = powerIncrSpeed;
 pointsSlider.value = drawer.getPoints();
 lineOpacitySlider.value = drawer.lineOpacity;
 trailingSlider.value = 1 - drawer.clearOpacity;
 rotationSpeedSlider.value = rotationSpeed;
 
+// Setup sliders callback
+powerValue.oninput = function () {
+    drawer.power = parseFloat(this.value);
+};
 powerSpeedSlider.oninput = function () {
     powerIncrSpeed = parseFloat(this.value);
 };
@@ -136,15 +155,8 @@ rotationSpeedSlider.oninput = function () {
     rotationSpeed = parseFloat(this.value);
 };
 
-function animate() {
-    //requestAnimationFrame(animate);
-    drawer.clear();
-    drawer.power += powerIncrSpeed;
-    drawer.incrRotation(rotationSpeed);
-    drawer.draw();
-}
-
-setInterval(animate, 40);
+animate();
+//setInterval(animate, 50);
 
 /***/ }),
 
@@ -166,6 +178,8 @@ var Utils = __webpack_require__(/*! ./utils.js */ "./src/utils.js");
 var PI_2 = 2 * Math.PI;
 
 var RayDrawer = function () {
+
+  // Constructor
   function RayDrawer(ctx, width, height) {
     _classCallCheck(this, RayDrawer);
 
@@ -175,18 +189,24 @@ var RayDrawer = function () {
     this._clearOpacity = 0.8;
     this._gradientStart = "#7474BF";
     this._gradientEnd = "#348AC7";
-    this.points = 1000;
+    this.points = 512;
     this._rotation = -1.5707963268; // 90°
-    this.lineOpacity = 0.1;
+    this.lineOpacity = 0.4;
     this.updateRayon();
     this.power = 1;
   }
+
+  // Setters
+
 
   _createClass(RayDrawer, [{
     key: "getPoints",
     value: function getPoints() {
       return this._points;
     }
+
+    // Functions
+
   }, {
     key: "clear",
     value: function clear() {
@@ -194,16 +214,22 @@ var RayDrawer = function () {
       this._ctx.fillStyle = "rgba(0,0,0," + this._clearOpacity + ")";
       this._ctx.fill();
     }
+
+    /**
+     * beginRad is the angular component of the polar coordinate of the beginning of the line
+     * endRad is the angular component of the polar coordinate of the end of the line
+     */
+
   }, {
     key: "draw",
     value: function draw() {
       for (var i = 1; i < this._points; ++i) {
-        var p0 = i * this._step + this._rotation;
-        var p1 = i * this._power % this._points * this._step + this._rotation;
-        var x0 = this._rayon * Math.sin(p0) + this._rayon;
-        var y0 = this._rayon * Math.cos(p0) + this._rayon;
-        var x1 = this._rayon * Math.sin(p1) + this._rayon;
-        var y1 = this._rayon * Math.cos(p1) + this._rayon;
+        var beginRad = i * this._step + this._rotation;
+        var endRad = i * this._power % this._points * this._step + this._rotation;
+        var x0 = this._rayon * Math.sin(beginRad) + this._rayon;
+        var y0 = this._rayon * Math.cos(beginRad) + this._rayon;
+        var x1 = this._rayon * Math.sin(endRad) + this._rayon;
+        var y1 = this._rayon * Math.cos(endRad) + this._rayon;
         this._ctx.beginPath();
         this._ctx.moveTo(x0, y0);
         this._ctx.lineTo(x1, y1);
@@ -292,7 +318,10 @@ var RayDrawer = function () {
     key: "power",
     set: function set(power) {
       this._power = power;
-    },
+    }
+
+    // Getters
+    ,
     get: function get() {
       return this._power;
     }
@@ -349,10 +378,10 @@ var Utils = function () {
       var progress = 0;
       for (var i = 0; i < steps; ++i) {
         // calculate new color
-        var diff_red = (endRed - startRed) * progress + startRed;
-        var diff_green = (endGreen - startGreen) * progress + startGreen;
-        var diff_blue = (endBlue - startBlue) * progress + startBlue;
-        colors[i] = 'rgba(' + diff_red + ',' + diff_green + ',' + diff_blue + ',' + alpha + ')';
+        var diffRed = (endRed - startRed) * progress + startRed;
+        var diffGreen = (endGreen - startGreen) * progress + startGreen;
+        var diffBlue = (endBlue - startBlue) * progress + startBlue;
+        colors[i] = 'rgba(' + diffRed + ',' + diffGreen + ',' + diffBlue + ',' + alpha + ')';
         progress += step;
         ++i;
       }
