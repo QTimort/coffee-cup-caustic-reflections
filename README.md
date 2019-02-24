@@ -6,8 +6,7 @@ Inspired fom [this article](http://lacim.uqam.ca/~plouffe/cercles/circles.html)
 ## Preview
 http://htmlpreview.github.io/?https://github.com/QTimort/coffee-cup-light-rays/blob/master/dist/index.html
 
-##Example
-
+## Example
 Caustic reflection in a cup of coffee
 
 ![caustic reflection in a cup of coffee](http://www.antoniosiber.org/bruno_pauns_caustic/kaustika_salica_1.jpg)
@@ -16,8 +15,7 @@ Caustic reflection in a cup of coffee
 
 
 ## Setup
-
-2.  Install dependencies:
+1.  Install dependencies:
 
         yarn
 
@@ -25,7 +23,7 @@ Caustic reflection in a cup of coffee
 
         npm install
 
-3.  Run webpack:
+2.  Run webpack:
 
         npm start
 
