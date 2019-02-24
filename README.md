@@ -4,7 +4,7 @@ Coffee cup light rays
 Inspired fom [this article](http://lacim.uqam.ca/~plouffe/cercles/circles.html)
 
 ## Preview
-Todo 
+http://htmlpreview.github.io/?https://github.com/QTimort/coffee-cup-light-rays/blob/master/dist/index.html
 
 ##Example
 
