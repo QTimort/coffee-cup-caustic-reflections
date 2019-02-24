@@ -11,7 +11,7 @@ Inspired fom [this article](http://lacim.uqam.ca/~plouffe/cercles/circles.html)
 http://htmlpreview.github.io/?https://github.com/QTimort/coffee-cup-light-rays/blob/master/dist/index.html
 
 ## Cool examples
-1. Stop the animation, det 'power' to 177 and 'points' to 532 and press play!
+1. Stop the animation, set 'power' to 177 and 'points' to 532 and press play!
 
 ## Setup
 1.  Install dependencies:
